@@ -33,12 +33,12 @@ echo committed successfully
 }
 
 g_seturl(){
-	if [ git remote -v grep -q origin ]; then
-		echo remote repo url already set.
-		return 0
-	fi
-
 	read -p "enter the repository url (ssh or https):" url
+	if [ git remote -v | grep -q origin ]; then
+                echo remote repo url already set.
+                return 0
+        fi
+
 	git remote add origin $url
 	echo checking if url is added..
 	git remote -v 
