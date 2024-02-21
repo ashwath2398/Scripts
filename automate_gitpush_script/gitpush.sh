@@ -14,15 +14,13 @@ fi
 
 cd $path 
 pwd
-#sleep 10
 git init
 ls $path
-sleep 10
 }
  
 #git add
 g_add(){
-read -p "enter the name of sub folder or the file you want to add" file_add
+read -p "enter the name of sub folder or the file you want to add: " file_add
 git add $file_add
 }
 
@@ -37,14 +35,13 @@ echo committed successfully
 g_seturl(){
 	if [ git remote -v grep -q origin ]; then
 		echo remote repo url already set.
-		return 1
+		return 0
 	fi
 
 	read -p "enter the repository url (ssh or https):" url
 	git remote add origin $url
 	echo checking if url is added..
 	git remote -v 
-	sleep 10
 }
 
 pushgit(){
